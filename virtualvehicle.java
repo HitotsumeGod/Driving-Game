@@ -36,6 +36,16 @@ class virtualVehicle extends car {
 			gallonsInTank = 12;
 			hasPowerSteering = true;
 			break;
+		case "misato_car":
+			name = "Ms. Misato";
+			seating = "techie";
+			year = 2024;
+			rateOfAcceleration = 1;
+			speedCap = 260;
+			milesToAGallon = 7;
+			gallonsInTank = 8;
+			hasPowerSteering = false;
+			break;
 		
 		}
 	
