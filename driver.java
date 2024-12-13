@@ -2,9 +2,21 @@ import java.util.Scanner;
 
 public class driver {
 
+	public void carMenu() {
+	
+		System.out.println();
+		System.out.println("g : get model details");
+		System.out.println("s : increase speed");
+		System.out.println("d : decrease speed");
+		System.out.println("u : drift");
+		System.out.println();
+	
+	}
+
 	public static void main(String[] args) {
 	
 		Scanner scan = new Scanner(System.in);
+		driver driver = new driver();
 		String s;
 		int n;
 		char a;
@@ -21,21 +33,23 @@ public class driver {
 		System.out.println("What kind of car would you like?");
 		String result = scan.nextLine().trim();
 		virtualVehicle vv = new virtualVehicle(result);
-		vv.getModelDetails();
 		while (true) {
 		
-		System.out.println("s : increase speed");
-		System.out.println("d : decrease speed");
-		System.out.println("u : drift");
+		driver.carMenu();
 		a = scan.nextLine().charAt(0);
 		switch (a) {
 		
+		case 'g':
+			vv.getModelDetails();
+			break;
 		case 's': 
 			n = scan.nextInt();
+			scan.nextLine();
 			vv.increaseSpeed(n, true);
 			break;
 		case 'd':
 			n = scan.nextInt();
+			scan.nextLine();
 			vv.decreaseSpeed(n, true);
 			break;
 		case 'u':
@@ -45,16 +59,9 @@ public class driver {
 		}
 		if (vv.hasGas()) {
 		
-		System.out.println("Enter 'kill' to close, or anything else to continue playing.");
-		scan.nextLine();
-		s = scan.nextLine();
-		if (s.equals("kill"))
-			break;
-		
 		} else {
 		
 			System.out.println("No more gas! Refuel? (y/n)");
-			scan.nextLine();
 			a = scan.nextLine().charAt(0);
 			if (a != 'y')
 				return;
@@ -64,7 +71,6 @@ public class driver {
 		}
 
 		}
-		scan.close();
 	}
 
 }

@@ -48,6 +48,7 @@ class virtualVehicle extends car {
 			break;
 		
 		}
+		gasInTank = gallonsInTank;
 	
 	}
 	
@@ -57,6 +58,14 @@ class virtualVehicle extends car {
 	
 	public void increaseSpeed(int toSpeed, boolean printEndSpeed) {
 		
+		if (currentSpeed + toSpeed > speedCap) {
+		
+			System.out.println();
+			System.out.println("Speed exceeds vehicle speed cap! Please try again.");
+			System.out.println();
+		
+		} else {
+			
 		try {
 			process(rateOfAcceleration);
 		} catch (InterruptedException e) {
@@ -66,6 +75,8 @@ class virtualVehicle extends car {
 		gasInTank--;
 		if (printEndSpeed)
 			System.out.println("Current speed is now " + currentSpeed + "!");
+		
+		}
 	
 	}
 	
@@ -77,6 +88,8 @@ class virtualVehicle extends car {
 			e.printStackTrace();
 		}
 		currentSpeed -= toSpeed;
+		if (currentSpeed < 0)
+			currentSpeed = 0;
 		if (printEndSpeed)
 			System.out.println("Current speed is now " + currentSpeed + "!");
 	
@@ -91,7 +104,9 @@ class virtualVehicle extends car {
 			
 			currentSpeed = 0;
 			currentDrift = rand.nextFloat((max - min) + 1) + min;
+			System.out.println();
 			System.out.println("Vehicle stopped. Drift was " + currentDrift + ".");
+			System.out.println();
 			
 		}
 	
@@ -99,6 +114,7 @@ class virtualVehicle extends car {
 	
 	public void getModelDetails() {
 	
+		System.out.println();
 		System.out.println(name + " (" + year + ")");
 		System.out.println("Miles to a gallon : " + milesToAGallon);
 		System.out.println("Has power steering : " + hasPowerSteering);
@@ -137,6 +153,7 @@ class virtualVehicle extends car {
 			System.out.print(".");
 			
 		}
+		System.out.println();
 	
 	}	
 
