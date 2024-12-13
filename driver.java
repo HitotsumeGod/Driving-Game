@@ -4,6 +4,11 @@ public class driver {
 
 	public void carMenu() {
 	
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		System.out.println();
 		System.out.println("g : get model details");
 		System.out.println("s : increase speed");
